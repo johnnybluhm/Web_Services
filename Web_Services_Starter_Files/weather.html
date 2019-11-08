@@ -57,13 +57,26 @@
 			
 		</div>
 		<br>
+		<div class="row">
+			<form onsubmit="funtion()">
+  Latitude: <input type="text" name="lat" id="qwert"><br>
+  Longitude: <input type="text" name="long"><br>
+  <input type="submit" value="Submit">
+</form>
+		</div>
 	</div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script>
 		$(document).ready(function() {
+
+
+	
+
 			var url ='https://api.darksky.net/forecast/8d2f125b413d2e4a64c2d3e6fdf781e9/37.8267,-122.4233'; //Place your DarkSky API Call Here 
+
+
 			$.ajax({url:url, dataType:"jsonp"}).then(function(data) {
 
 		console.log(data);//Review all of the data returned
@@ -81,19 +94,20 @@
 		document.getElementById("icon_today").innerHTML=image_today;
 		var temp = data.currently.temperature;
 
-		
 		//thermometer extra credit
 
-			if (temp>85){
-				document.getElementById("thermometer_inner").style.background-color="red";
-	}
-	esle if (temp<65){
-		document.getElementById("thermometer_inner").style.background-color="blue";
+		if(temp<65){
+			document.getElementById("thermometer_inner").style.background="blue";
+		}
+		else if(temp>85){
+			document.getElementById("thermometer_inner").style.background="red";
+		}
+		else{
+			document.getElementById("thermometer_inner").style.background="grey";
+		}
 
-	}
-	else{
-		document.getElementById("thermometer_inner").style.background-color="grey";
-	}
+		
+
 		document.getElementById("temp_today").innerHTML=temp;
 		document.getElementById("thermometer_inner").style.height=temp+"%";
 		var rain = data.currently.precipProbability;
