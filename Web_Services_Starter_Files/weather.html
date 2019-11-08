@@ -80,6 +80,20 @@
 		document.getElementById("image_today").src='img/'+image_today+'.png';
 		document.getElementById("icon_today").innerHTML=image_today;
 		var temp = data.currently.temperature;
+
+		
+		//thermometer extra credit
+
+			if (temp>85){
+				document.getElementById("thermometer_inner").style.background-color="red";
+	}
+	esle if (temp<65){
+		document.getElementById("thermometer_inner").style.background-color="blue";
+
+	}
+	else{
+		document.getElementById("thermometer_inner").style.background-color="grey";
+	}
 		document.getElementById("temp_today").innerHTML=temp;
 		document.getElementById("thermometer_inner").style.height=temp+"%";
 		var rain = data.currently.precipProbability;
